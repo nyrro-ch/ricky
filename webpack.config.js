@@ -5,6 +5,7 @@ const TailwindCss = require('tailwindcss')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin')
 
 const IS_DEVELOPMENT = process.env.NODE_ENV === 'dev'
 
@@ -42,6 +43,15 @@ module.exports = {
 		new MiniCssExtractPlugin({
 			filename: '[name].[contenthash].css',
 			chunkFilename: '[id].css'
+		}),
+		new ImageMinimizerPlugin({
+			minimizerOptions: {
+				plugins: [
+					['gifscale'],
+					['jpegtran'],
+					['optipng']
+				]
+			}
 		})
 	],
 
@@ -86,7 +96,11 @@ module.exports = {
 						}
 					}
 				]
-			}
+			},
+			{
+				test: /\.(jpe?g|png|gif|svg)$/i,
+				type: 'asset',
+			},
 		]
 	}
 
