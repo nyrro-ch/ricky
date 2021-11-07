@@ -11,9 +11,6 @@ module.exports = {
 				directory: path.join(__dirname, 'views'),
 			},
 			{
-				directory: path.join(__dirname, 'partials'),
-			},
-			{
 				directory: path.join(__dirname, 'public'),
 			},
 		],
@@ -22,9 +19,12 @@ module.exports = {
 		https: false,
 		host: '0.0.0.0',
 		port: 9000,
+		devMiddleware: {
+			writeToDisk: true
+		}
 	},
 
 	output: {
-		path: path.resolve(__dirname, 'dist')
+		path: path.resolve(__dirname, 'public')
 	}
 }

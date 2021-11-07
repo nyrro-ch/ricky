@@ -2,8 +2,8 @@ const path = require('path')
 const webpack = require('webpack')
 
 const TailwindCss = require('tailwindcss')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin')
 
@@ -18,7 +18,7 @@ module.exports = {
 	],
 
 	output: {
-		filename: '[name].[contenthash].js',
+		filename: '[name].js',
 		path: path.join(__dirname, 'public')
 	},
 
@@ -32,16 +32,13 @@ module.exports = {
 	},
 
 	plugins: [
-		new HtmlWebpackPlugin({
-			template: path.join(__dirname, 'index.pug')
-		}),
 		new CopyWebpackPlugin({
 			patterns: [
 				{ from: './shared', to: ''}	
 			]
 		}),
 		new MiniCssExtractPlugin({
-			filename: '[name].[contenthash].css',
+			filename: '[name].css',
 			chunkFilename: '[id].css'
 		}),
 		new ImageMinimizerPlugin({

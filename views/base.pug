@@ -1,0 +1,23 @@
+block variables
+
+doctype html
+html(lang="en")
+  head
+    meta(charset="utf-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+
+    base(href="/")
+
+    title Ricky personal website
+
+    link(rel="preload" href="/main.css" as="style" onload="this.onload = function () {}; this.rel = 'stylesheet';")
+    noscript
+      link(rel="stylesheet" href="/main.css")
+
+  body
+    include shared/navigation.pug
+
+    .content(data-slug=slug)
+      block body
+
+    script(async src="/main.js")
