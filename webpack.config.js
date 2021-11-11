@@ -19,7 +19,8 @@ module.exports = {
 
 	output: {
 		filename: '[name].js',
-		path: path.join(__dirname, 'public')
+		path: path.join(__dirname, 'public'),
+    clean: true
 	},
 
 	resolve: {
@@ -34,7 +35,8 @@ module.exports = {
 	plugins: [
 		new CopyWebpackPlugin({
 			patterns: [
-				{ from: './shared', to: ''}	
+				{ from: './shared', to: ''},
+				{ from: './assets', to: 'assets'}	
 			]
 		}),
 		new MiniCssExtractPlugin({
@@ -44,7 +46,6 @@ module.exports = {
 		new ImageMinimizerPlugin({
 			minimizerOptions: {
 				plugins: [
-					['gifscale'],
 					['jpegtran'],
 					['optipng']
 				]
@@ -95,7 +96,7 @@ module.exports = {
 				]
 			},
 			{
-				test: /\.(jpe?g|png|gif|svg)$/i,
+				test: /\.(jpe?g|png|svg)$/i,
 				type: 'asset',
 			},
 		]

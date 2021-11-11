@@ -1,3 +1,5 @@
+const { screens } = require('tailwindcss/defaultTheme')
+
 module.exports = {
   purge: {
     enabled: true,
@@ -5,16 +7,20 @@ module.exports = {
       "./index.pug",
       "./views/**/*.html",
       "./views/**/*.pug",
-      "./partials/**/*.html",
-      "./partials/**/*.pug",
     ]
   },
   darkMode: false, // or 'media' or 'class'
   theme: {
     fontFamily: {
-      'sans': ['NeueMontreal-Regular', 'Roboto', 'Arial']
+      'sans': ['NeueMontreal-Regular', 'Roboto', 'Arial'],
+      'serif': ['GalleryModern']
     },
-    extend: {},
+    screens: {
+      'xs': '425px',
+      ...screens
+    },
+    extend: {
+    },
   },
   variants: {
     extend: {},

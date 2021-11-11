@@ -1,0 +1,28 @@
+extends ../base.pug
+
+block variables
+  - var slug = "projects"
+
+block body 
+  div(class="max-w-screen-xl mx-auto w-full relative px-8 xl:px-0")
+
+    - var title = 'Projects'
+    include ../shared/headline
+
+  div(class="max-w-screen-2xl mx-auto w-full px-8 2xl:px-0 pb-20")
+    div(class="flex flex-col my-20 lg:my-52 w-full border-b border-black")
+      div(class="py-16 lg:py-20 2xl:py-32 pl-4 md:pl-40 border-t border-black")
+        span(class="font-serif text-xl") 001
+        p(class="font-serif uppercase text-4xl sm:text-5xl lg:text-6xl 2xl:text-7xl")
+          a(href="#") Air-Haustechnik.ch
+
+      div(class="py-16 lg:py-20 2xl:py-32 pl-4 md:pl-40 border-t border-black")
+        span(class="font-serif text-xl") 002
+        p(class="font-serif uppercase text-4xl sm:text-5xl lg:text-6xl 2xl:text-7xl")
+          a(href="#") jaclyncosmetics.ch
+
+      div(class="py-16 lg:py-20 2xl:py-32 pl-4 md:pl-40 border-t border-black")
+        span(class="font-serif text-xl") 003
+        p(class="font-serif uppercase text-4xl sm:text-5xl lg:text-6xl 2xl:text-7xl")
+          a(href="#") recap-cystitis.com
+

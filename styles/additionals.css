@@ -1,26 +1,36 @@
 html {
-  font-size: 12px;
+  font-size: 13px;
   min-height: 100%;
+  height: 100%;
 }
 body {
-  min-height: 100%;
+  height: 100%;
 }
 .intro-text {
   max-width: 280px;
 }
+ul.nav-items li:not(:last-child) {
+  margin-bottom: 1rem;
+}
+.js-headline .line {
+  text-decoration: underline;
+}
 
-@media (min-width: 768px) {
+@media (min-width: 640px) {
+  ul.nav-items li:not(:last-child) {
+    margin-right: 3rem;
+    margin-bottom: 0;
+  }
+}
+@media (min-width: 425px) {
   html {
-    font-size: 12px;
+    font-size: 14px;
   }
   .intro-text {
     max-width: 452px;
   }
 }
 @media (min-width: 1024px) {
-  html {
-    font-size: 14px;
-  }
 }
 @media (min-width: 1280px) {
   html {

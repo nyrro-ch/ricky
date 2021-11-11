@@ -4,8 +4,18 @@ block variables
   - var slug = "home"
 
 block body 
-  main(class="max-w-screen-xl mx-auto w-full relative px-8 xl:px-0")
-    div(class="mt-32 lg:mt-44 ml-8 sm:ml-16 lg:ml-32")
-      h1(class="text-6xl sm:text-7xl md:text-8xl lg:text-9xl") Developer based <br> in switzerland
-      div(class="flex justify-end mt-20 lg:mt-48")
-        p.intro-text.text-lg Hi, I'm ricky. A self thought engineer from sitzerland. This is my personal website. The content is full of ideas and experiences.
+  div(class="max-w-screen-xl mx-auto w-full relative px-8 xl:px-0 grid grid-cols-1")
+    div(class="mt-24 sm:mt-44 xs:ml-8 sm:ml-16 md:ml-24 lg:ml-32")
+      h1(class="js-headline font-serif text-6xl xs:text-7xl md:text-8xl lg:text-9xl") <span class="line">Developer</span> <span>based</span><br> <span>in</span> <span class="line">switzerland</span>
+      div(class="flex lg:justify-end mt-12 md:mt-24 lg:mt-48")
+        p.intro-text.text-xl Hi, I'm ricky. A self thought engineer from sitzerland. This is my personal website. The content is full of ideas and experiences.
+
+    div(class="xs:ml-8 mt-20 lg:mt-8 pb-16")
+      div(class="text-xl")
+        ul
+          li(class="mb-4")
+            a(href="#") email
+          li(class="mb-4")
+            a(href="#") linkedin
+          li
+            a(href="#") instagram

@@ -14,3 +14,19 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.get('/', (req, res) => {
   res.render('pages/home')
 })
+
+app.get('/projects', (req, res) => {
+  res.render('pages/projects')
+})
+
+app.get('/about', (req, res) => {
+  res.render('pages/about')
+})
+
+app.get('/gallery', (req, res) => {
+  res.render('pages/gallery')
+})
+
+app.get('/recommendations', (req, res) => {
+  res.render('pages/recommendations')
+})
