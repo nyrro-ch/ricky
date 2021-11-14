@@ -1,0 +1,40 @@
+extends ../base.pug
+
+block variables
+  - var slug = "recommended"
+
+block body 
+  div(class="max-w-screen-xl mx-auto w-full relative px-8 xl:px-0")
+
+    - var title = 'Recommended'
+    include ../shared/headline
+
+  div(class="max-w-text mx-auto w-full my-20 lg:my-52 px-8 xl:px-0")
+    div(class="xs:ml-8 sm:ml-16 md:ml-24 lg:ml-0")
+      div(class="flex flex-col md:flex-row")
+        div(class="font-bold text-2xl hidden md:block")
+          p 1
+        div(class="md:ml-36")
+          h2(class="font-serif text-4xl lg:text-5xl mb-6 lg:mb-12") Books
+          div(class="rec--list")
+            ul(class="rec--books text-xl lg:text-2xl")
+              li
+                a(href="#" class="underline pl-4") Sidartha - Hermann Hesse
+              li
+                a(href="#" class="underline pl-4") 12 Rules of life - by Jordan Peterson
+              li
+                a(href="#" class="underline pl-4") Eine kurze Geschichte der Menschheit - by Cuna Ciemy
+
+      div(class="mt-20 lg:mt-32 xl:mt-48 flex flex-col md:flex-row")
+        div(class="font-bold text-2xl hidden md:block")
+          p 2
+        div(class="md:ml-36")
+          h2(class="font-serif text-4xl lg:text-5xl mb-6 lg:mb-12") Movies
+          div(class="rec--list")
+            ul(class="rec--movies text-xl lg:text-2xl")
+              li
+                a(href="#" class="underline pl-4") Sidartha - Hermann Hesse
+              li
+                a(href="#" class="underline pl-4") 12 Rules of life - by Jordan Peterson
+              li
+                a(href="#" class="underline pl-4") Eine kurze Geschichte der Menschheit - by Cuna Ciemy

@@ -27,6 +27,6 @@ app.get('/gallery', (req, res) => {
   res.render('pages/gallery')
 })
 
-app.get('/recommendations', (req, res) => {
-  res.render('pages/recommendations')
+app.get('/recommended', (req, res) => {
+  res.render('pages/recommended')
 })

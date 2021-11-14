@@ -20,6 +20,9 @@ module.exports = {
       ...screens
     },
     extend: {
+      maxWidth: {
+        'text': '950px'
+      }
     },
   },
   variants: {

@@ -6,6 +6,69 @@ block variables
 block body 
   div(class="max-w-screen-xl mx-auto w-full relative px-8 xl:px-0")
 
-    - var title = 'About'
+    - var title = 'About me'
     include ../shared/headline
 
+  div(class="mt-20 md:mt-40 pb-20 md:pb-40 max-w-screen-xl mx-auto w-full relative px-8 xl:px-0")
+
+    div(class="dots absolute top-1/4 left-0 z-0 pl-4")
+      img(src="/assets/dots.svg" alt="Dots graphics")
+
+    div(class="flex flex-col relative z-10")
+
+      div(class="about--box flex flex-col md:flex-row md:justify-between md:items-center") 
+        div(class="about--text px-4 border-l border-black lg:-mt-12")
+          div(class="font-serif text-4xl md:text-5xl mb-12 md:mb-20")
+            h2 programming
+          div(class="text-xl md:text-2xl")
+            p Hi, I’m Ricky. A self thought engineer from switzerland. This is my personal Website. Content is full of ideas, thoughts and experiences.
+        div(class="about--image md:w-auto mx-auto md:mx-0 transform rotate-6 md:px-0 mt-12 md:mt-0")
+          img(src="/assets/foto-1.jpg" alt="Programming foto")
+
+      div(class="about--box mt-40 md:mt-60 flex flex-col md:flex-row-reverse md:justify-between md:items-center") 
+        div(class="about--text px-4 border-r border-black lg:-mt-12")
+          div(class="font-serif text-4xl md:text-5xl mb-12 md:mb-20")
+            h2 fitness
+          div(class="text-xl md:text-2xl")
+            p Hi, I’m Ricky. A self thought engineer from switzerland. This is my personal Website. Content is full of ideas, thoughts and experiences.
+        div(class="about--image md:w-auto mx-auto md:mx-0 transform rotate-6 pl-8 md:pl-0 md:px-0 mt-12 md:mt-0")
+          img(src="/assets/foto-2.jpg" alt="Fitness")
+
+      div(class="about--box mt-40 md:mt-60 flex flex-col md:flex-row md:justify-between md:items-center") 
+        div(class="about--text px-4 border-l border-black lg:-mt-12")
+          div(class="font-serif text-4xl md:text-5xl mb-12 md:mb-20")
+            h2 creativity
+          div(class="text-xl md:text-2xl")
+            p Hi, I’m Ricky. A self thought engineer from switzerland. This is my personal Website. Content is full of ideas, thoughts and experiences.
+        div(class="about--image md:w-auto mx-auto md:mx-0 transform rotate-6 md:px-0 mt-12 md:mt-0")
+          img(src="/assets/foto-3.jpg" alt="Fitness")
+
+      div(class="about--box mt-40 md:mt-60 flex flex-col md:flex-row-reverse md:justify-between md:items-center") 
+        div(class="about--text px-4 border-r border-black lg:-mt-12")
+          div(class="font-serif text-4xl md:text-5xl mb-12 md:mb-20")
+            h2 music
+          div(class="text-xl md:text-2xl")
+            p Hi, I’m Ricky. A self thought engineer from switzerland. This is my personal Website. Content is full of ideas, thoughts and experiences.
+        div(class="about--image md:w-auto mx-auto md:mx-0 transform rotate-6 pl-8 md:pl-0 md:px-0 mt-12 md:mt-0")
+          img(src="/assets/foto-4.jpg" alt="Fitness")
+
+    div(class="mt-32 sm:mt-52 xs:ml-8 sm:ml-16 md:ml-24 lg:ml-32 mb-20")
+      h2(class="js-headline font-serif text-6xl xs:text-7xl md:text-8xl underline") History 
+
+    div(class="border-t border-black")
+      div(class="flex-col")
+        div(class="flex flex-col sm:flex-row sm:items-center border-b border-black py-4 sm:py-10")
+          div(class="c-1 order-2 sm:order-none font-serif text-2xl md:text-4xl lg:text-5xl")
+            p NOW
+          div(class="c-2 order-3 sm:order-none mt-4 sm:mt-0 text-2xl sm:text-xl md:text-2xl lg:text-3xl")
+            p NYRRO GmbH
+          div(class="c-3 order-1 sm:order-none text-base md:text-lg uppercase order-2")
+            p Work
+
+        div(class="flex items-center border-b border-black py-10")
+          div(class="c-1 font-serif text-4xl lg:text-5xl")
+            p NOW
+          div(class="c-2 text-2xl lg:text-3xl")
+            p NYRRO GmbH
+          div(class="c-3 text-lg uppercase")
+            p Work

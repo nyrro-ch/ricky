@@ -6,6 +6,9 @@ html {
 body {
   height: 100%;
 }
+.content {
+  overflow: hidden;
+}
 .intro-text {
   max-width: 280px;
 }
@@ -15,13 +18,41 @@ ul.nav-items li:not(:last-child) {
 .js-headline .line {
   text-decoration: underline;
 }
-
-@media (min-width: 640px) {
-  ul.nav-items li:not(:last-child) {
-    margin-right: 3rem;
-    margin-bottom: 0;
-  }
+.about--box:nth-child(even) .about--image {
+  transform: rotate(-6deg);
 }
+.about--image {
+  max-width: 327px;
+}
+.about--text {
+  max-width: 465px;
+}
+.dots {
+  max-width: 80px;
+}
+.c-2 {
+  flex: 2;
+}
+.c-1, .c-3 {
+  flex: 1;
+}
+.rec--list ul li:not(:last-child) {
+  margin-bottom: 1rem;
+}
+.rec--list ul li {
+  display: flex;
+}
+.rec--books li::before {
+  content: '\01F4DA';
+  font-size: 1.875rem;
+  display: block;
+}
+.rec--movies li::before {
+  content: '\01F3AC';
+  font-size: 1.875rem;
+  display: block;
+}
+
 @media (min-width: 425px) {
   html {
     font-size: 14px;
@@ -30,7 +61,30 @@ ul.nav-items li:not(:last-child) {
     max-width: 452px;
   }
 }
+@media (min-width: 640px) {
+  ul.nav-items li:not(:last-child) {
+    margin-right: 3rem;
+    margin-bottom: 0;
+  }
+  .gallery div:nth-child(2) {
+    margin-top: 3rem;
+  }
+}
+@media (min-width: 768px) {
+  .about--box:nth-child(even) {
+    flex-direction: row-reverse;
+  }
+  .about--box:nth-child(even) .about--text {
+    padding-left: 3rem;
+  }
+  .about--image {
+    max-width: 627px;
+  }
+}
 @media (min-width: 1024px) {
+  .dots {
+    max-width: 122px;
+  }
 }
 @media (min-width: 1280px) {
   html {
