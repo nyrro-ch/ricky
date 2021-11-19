@@ -11,7 +11,7 @@ install_all:
 	docker run --rm -it -v $(shell pwd):/app -w /app --name install node:16  npm install
 
 install_dev:
-	docker run --rm -it -v $(shell pwd):/app -w /app --name install -p 9000:9000 node:16  npm install -D $(PKG)
+	docker run --rm -it -v $(shell pwd):/app -w /app --name install node:16  npm install -D $(PKG)
 
 install:
 	docker run --rm -it -v $(shell pwd):/app -w /app --name install node:16  npm install $(PKG)

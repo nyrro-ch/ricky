@@ -14,10 +14,10 @@ html(lang="en")
     noscript
       link(rel="stylesheet" href="/main.css")
 
-  body
+  body(data-barba="wrapper")
     include shared/navigation.pug
 
-    .content(data-slug=slug)
+    .content(data-barba="container" data-barba-namespace=slug)
       block body
 
     script(async src="/main.js")
