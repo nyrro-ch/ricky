@@ -20,13 +20,37 @@ module.exports = {
       ...screens
     },
     extend: {
+      fontSize: {
+        '11.5': '2.875rem',
+        '13.8': '3.45rem'
+      },
       maxWidth: {
-        'text': '950px'
+        'text': '950px',
+        '2-col': '303px'
+      },
+      margin: {
+        '19.25': '4.8125rem',
+        '25': '6.25rem',
+        '30': '7.5rem',
+        '58': '14.5rem'
+      },
+      padding: {
+        '21': '5.25rem'
+      },
+      colors: {
+        grey: {
+          DEFAULT: '#757575'
+        },
+        red: {
+          DEFAULT: '#E53935'
+        }
       }
     },
   },
   variants: {
     extend: {},
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/aspect-ratio')
+  ],
 }

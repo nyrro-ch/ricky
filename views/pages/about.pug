@@ -4,71 +4,96 @@ block variables
   - var slug = "about"
 
 block body 
-  div(class="max-w-screen-xl mx-auto w-full relative px-8 xl:px-0")
+  div(class="max-w-screen-xl mx-auto w-full relative px-5 xl:px-0")
 
     - var title = 'About me'
     include ../shared/headline
 
-  div(class="mt-20 md:mt-40 pb-20 md:pb-40 max-w-screen-xl mx-auto w-full relative px-8 xl:px-0")
+  div(class="mt-9 md:mt-40 pb-20 md:pb-40 max-w-screen-xl mx-auto w-full relative px-5 xl:px-0")
 
     div(class="dots absolute top-1/4 left-0 z-0 pl-4")
       img(src="/assets/dots.svg" alt="Dots graphics")
 
     div(class="flex flex-col relative z-10")
 
-      div(class="about--box flex flex-col md:flex-row md:justify-between md:items-center") 
-        div(class="about--text px-4 border-l border-black lg:-mt-12")
-          div(class="font-serif text-4xl md:text-5xl mb-12 md:mb-20")
+      div(class="about--box") 
+        div(class="about--headline")
+          div(class="font-serif text-red text-3xl md:text-4xl lg:text-5xl mb-5 md:mb-12")
             h2 programming
-          div(class="text-xl md:text-2xl")
-            p Hi, I’m Ricky. A self thought engineer from switzerland. This is my personal Website. Content is full of ideas, thoughts and experiences.
-        div(class="about--image md:w-auto mx-auto md:mx-0 transform rotate-6 md:px-0 mt-12 md:mt-0")
-          img(src="/assets/foto-1.jpg" alt="Programming foto")
+        div(class="flex flex-col sm:flex-row sm:justify-between")
+          div(class="about--text portrait sm:w-1/2")
+            div(class="h-full text-base lg:text-lg flex flex-col flex-wrap")
+              div(class="sm:max-w-2-col")
+                p I studied economics and business administration for several years but always knew that it didn't interest me much. When I entered the IT industry, I discovered a passion for it. I started to learn everything about computers. Read a lot of books, watched a lot of videos / online courses, did some certifications and practiced a lot. After I did an internship as a web developer I never left this profession. Now I've been working as a web developer for over 5 years, graduated in computer science from a technical college and I'm currently pursuing a bachelor's and master's degree in computer science. 
+              div(class="sm:max-w-2-col")
+                p Besides I have founded a company where I develop websites and webapps. I am not only passionate about programming but also about many other topics like cyber security, cloud computing, blockchain, AI, data science, mathematics, system administration, hardware and IoT and much more.
+          div(class="about--image portrait sm:w-1/2 sm:px-4 md:pl-8 lg:pl-0 mt-4 sm:mt-0")
+            div(class="aspect-w-7 aspect-h-10")
+              img(src="/assets/foto-1.jpg" alt="Programming foto" class="object-cover object-center")
 
-      div(class="about--box mt-40 md:mt-60 flex flex-col md:flex-row-reverse md:justify-between md:items-center") 
-        div(class="about--text px-4 border-r border-black lg:-mt-12")
-          div(class="font-serif text-4xl md:text-5xl mb-12 md:mb-20")
+      div(class="about--box mt-20 md:mt-32 lg:mt-58") 
+        div(class="about--headline")
+          div(class="font-serif text-red text-3xl md:text-4xl lg:text-5xl mb-5 md:mb-12")
             h2 fitness
-          div(class="text-xl md:text-2xl")
-            p Hi, I’m Ricky. A self thought engineer from switzerland. This is my personal Website. Content is full of ideas, thoughts and experiences.
-        div(class="about--image md:w-auto mx-auto md:mx-0 transform rotate-6 pl-8 md:pl-0 md:px-0 mt-12 md:mt-0")
-          img(src="/assets/foto-2.jpg" alt="Fitness")
+        div(class="flex flex-col md:flex-row md:justify-between")
+          div(class="about--text landscape")
+            div(class="h-full text-base lg:text-lg flex flex-col flex-wrap")
+              div(class="md:max-w-2-col")
+                p Training is an important aspect of my life. It has often helped me through difficult times. It keeps me physically and mentally fit so I can be more active and productive throughout the day. Regular training also helps me to be more disciplined. I mainly do weight lifting but I am open to many sports. I like to watch football, basketball, MotoGP, F1, UFC and boxing.
+          div(class="about--image landscape md:pl-8 lg:pl-0 mt-4 md:mt-0")
+            div(class="aspect-w-2 aspect-h-1")
+              img(src="/assets/foto-2.jpg" alt="Programming foto" class="object-cover object-center")
 
-      div(class="about--box mt-40 md:mt-60 flex flex-col md:flex-row md:justify-between md:items-center") 
-        div(class="about--text px-4 border-l border-black lg:-mt-12")
-          div(class="font-serif text-4xl md:text-5xl mb-12 md:mb-20")
+
+      div(class="about--box box-reverse mt-20 md:mt-32 lg:mt-58") 
+        div(class="about--headline flex md:justify-end")
+          div(class="font-serif text-red text-3xl md:text-4xl lg:text-5xl mb-5 md:mb-12 md:max-w-2-col md:w-full")
             h2 creativity
-          div(class="text-xl md:text-2xl")
-            p Hi, I’m Ricky. A self thought engineer from switzerland. This is my personal Website. Content is full of ideas, thoughts and experiences.
-        div(class="about--image md:w-auto mx-auto md:mx-0 transform rotate-6 md:px-0 mt-12 md:mt-0")
-          img(src="/assets/foto-3.jpg" alt="Fitness")
+        div(class="flex flex-col md:flex-row-reverse md:justify-between")
+          div(class="about--text landscape")
+            div(class="h-full text-base lg:text-lg flex flex-col flex-wrap md:items-end")
+              div(class="md:max-w-2-col")
+                p Many things, like thoughts and emotions, can be expressed through creativity. Likewise, art has an impact on us. It is a kind of meditation and relaxation when I can simply be creative. I draw either digitally or with pen and paper, create graphics on the computer, play with Adobe programs (Photoshop, InDesign, Illustrator) or make web designs and play with animations. I am not a professional but I still enjoy it. I love to look at other people's art. Be it photography, movies, music, painting, drawings, typography illustrations or web and app designs. It's always amazing how creative some people are.
+          div(class="about--image landscape md:pr-8 lg:pr-0 mt-4 md:mt-0")
+            div(class="aspect-w-2 aspect-h-1")
+              img(src="/assets/foto-3.jpg" alt="Programming foto" class="object-cover object-center")
 
-      div(class="about--box mt-40 md:mt-60 flex flex-col md:flex-row-reverse md:justify-between md:items-center") 
-        div(class="about--text px-4 border-r border-black lg:-mt-12")
-          div(class="font-serif text-4xl md:text-5xl mb-12 md:mb-20")
+      div(class="about--box mt-20 md:mt-32 lg:mt-58") 
+        div(class="about--headline")
+          div(class="font-serif text-red text-3xl md:text-4xl lg:text-5xl mb-5 md:mb-12")
             h2 music
-          div(class="text-xl md:text-2xl")
-            p Hi, I’m Ricky. A self thought engineer from switzerland. This is my personal Website. Content is full of ideas, thoughts and experiences.
-        div(class="about--image md:w-auto mx-auto md:mx-0 transform rotate-6 pl-8 md:pl-0 md:px-0 mt-12 md:mt-0")
-          img(src="/assets/foto-4.jpg" alt="Fitness")
+        div(class="flex flex-col md:flex-row md:justify-between")
+          div(class="about--text landscape")
+            div(class="h-full text-base lg:text-lg flex flex-col flex-wrap")
+              div(class="md:max-w-2-col")
+                p Music accompanies me in almost every activity. Be it fitness, work, driving, walking the dog or just relaxing. I listen to almost everything from rap to pop, house to rock. For me, there is always the right song for every occasion. Music brings more color into life.
+          div(class="about--image landscape md:pl-8 lg:pl-0 mt-4 md:mt-0")
+            div(class="aspect-w-6 aspect-h-3")
+              img(src="/assets/foto-2.jpg" alt="Programming foto" class="object-cover object-center")
 
-    div(class="mt-32 sm:mt-52 xs:ml-8 sm:ml-16 md:ml-24 lg:ml-32 mb-20")
+
+    div(class="mt-32 sm:mt-52 mb-20 text-center")
       h2(class="js-headline font-serif text-6xl xs:text-7xl md:text-8xl underline") History 
 
-    div(class="border-t border-black")
-      div(class="flex-col")
-        div(class="flex flex-col sm:flex-row sm:items-center border-b border-black py-4 sm:py-10")
-          div(class="c-1 order-2 sm:order-none font-serif text-2xl md:text-4xl lg:text-5xl")
-            p NOW
-          div(class="c-2 order-3 sm:order-none mt-4 sm:mt-0 text-2xl sm:text-xl md:text-2xl lg:text-3xl")
-            p NYRRO GmbH
-          div(class="c-3 order-1 sm:order-none text-base md:text-lg uppercase order-2")
-            p Work
+    div(class="flex-col")
+      div(class="flex flex-row flex-wrap border-b border-black py-4")
+        div(class="w-1/2 sm:w-auto order-1 flex-1 sm:order-none font-serif text-2xl md:text-4xl lg:text-5xl")
+          p(class="font-sans uppercase text-xs md:text-base text-grey") from
+          p.text-red 2020
+        div(class="w-full sm:w-auto order-3 flex-auto sm:order-none mt-4 sm:mt-0 text-lg md:text-2xl")
+          p(class="font-sans uppercase text-xs sm:text-base text-grey") work
+          p(class="font-medium") Web Engineer <span class="font-normal">@ NYRRO GmbH</span>
+        div(class="w-1/2 sm:w-auto order-2 flex-1 sm:order-none font-serif text-2xl md:text-4xl lg:text-5xl uppercase text-right")
+          p(class="font-sans uppercase text-xs sm:text-base text-grey") to
+          p(class="text-red") NOW
 
-        div(class="flex items-center border-b border-black py-10")
-          div(class="c-1 font-serif text-4xl lg:text-5xl")
-            p NOW
-          div(class="c-2 text-2xl lg:text-3xl")
-            p NYRRO GmbH
-          div(class="c-3 text-lg uppercase")
-            p Work
+      div(class="flex flex-row flex-wrap border-b border-black py-4")
+        div(class="w-1/2 sm:w-auto order-1 flex-1 sm:order-none font-serif text-2xl md:text-4xl lg:text-5xl")
+          p(class="font-sans uppercase text-xs md:text-base text-grey") from
+          p.text-red 2020
+        div(class="w-full sm:w-auto order-3 flex-auto sm:order-none mt-4 sm:mt-0 text-lg md:text-2xl")
+          p(class="font-sans uppercase text-xs sm:text-base text-grey") education
+          p(class="font-medium") Web Engineer <span class="font-normal">@ NYRRO GmbH</span>
+        div(class="w-1/2 sm:w-auto order-2 flex-1 sm:order-none font-serif text-2xl md:text-4xl lg:text-5xl uppercase text-right")
+          p(class="font-sans uppercase text-xs sm:text-base text-grey") to
+          p(class="text-red") NOW

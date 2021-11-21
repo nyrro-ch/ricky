@@ -4,18 +4,15 @@ block variables
   - var slug = "home"
 
 block body 
-  div(class="max-w-screen-xl mx-auto w-full relative px-8 xl:px-0 grid grid-cols-1")
-    div(class="mt-24 sm:mt-44 xs:ml-8 sm:ml-16 md:ml-24 lg:ml-32")
-      h1(class="js-headline font-serif text-6xl xs:text-7xl md:text-8xl lg:text-9xl") <span class="line">Developer</span> <span>based</span><br> <span>in</span> <span class="line">switzerland</span>
-      div(class="flex lg:justify-end mt-12 md:mt-24 lg:mt-48")
-        p.intro-text.text-xl Hi, I'm ricky. A self thought engineer from sitzerland. This is my personal website. The content is full of ideas and experiences.
+  div(class="max-w-screen-xl mx-auto w-full relative px-5 xl:px-0")
+    div(class="mt-9 xl:mt-5")
+      h1(class="js-headline font-serif leading-tight text-11.5 xs:text-13.8 sm:text-7xl md:text-8xl lg:text-9xl") <span class="line">Developer</span> <span>based</span><br> <span>in</span> <span class="line text-red">switzerland</span>
 
-    div(class="xs:ml-8 mt-20 lg:mt-8 pb-16")
-      div(class="text-xl")
-        ul
-          li(class="mb-4")
-            a(href="#") email
-          li(class="mb-4")
-            a(href="#") linkedin
-          li
-            a(href="#") instagram
+    div(class="flex flex-col lg:flex-row justify-between mt-9 lg:mt-30 mb-32")
+      div(class="")
+        img(src="/assets/solothurn.jpg" alt="Solothurn")
+      div(class="lg:max-w-2-col sm:text-lg mt-9 lg:mt-0 lg:pl-16 xl:pl-0")
+        p Web Engineer / Software Engineer
+        p(class="intro-text mt-9 lg:mt-19.25") Hi, I'm ricky. A self thought engineer from sitzerland. This is my personal website. The content is full of ideas and experiences.
+
+  include ../shared/footer

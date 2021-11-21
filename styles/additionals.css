@@ -1,5 +1,5 @@
 html {
-  font-size: 13px;
+  font-size: 16px;
   min-height: 100%;
   height: 100%;
 }
@@ -8,6 +8,15 @@ body {
 }
 .content {
   overflow: hidden;
+}
+.header {
+  height: 130px;
+}
+.nav-items li.active {
+  color: #E53935;
+}
+.lines-img {
+  max-width: 303px;
 }
 .intro-text {
   max-width: 280px;
@@ -18,15 +27,9 @@ ul.nav-items li:not(:last-child) {
 .js-headline .line {
   text-decoration: underline;
 }
-.about--box:nth-child(even) .about--image {
-  transform: rotate(-6deg);
-}
-.about--image {
-  max-width: 327px;
-}
-.about--text {
-  max-width: 465px;
-}
+/* .about--box:nth-child(even) .about--image { */
+/*   transform: rotate(-6deg); */
+/* } */
 .dots {
   max-width: 80px;
 }
@@ -54,9 +57,6 @@ ul.nav-items li:not(:last-child) {
 }
 
 @media (min-width: 425px) {
-  html {
-    font-size: 14px;
-  }
   .intro-text {
     max-width: 452px;
   }
@@ -64,21 +64,47 @@ ul.nav-items li:not(:last-child) {
 @media (min-width: 640px) {
   ul.nav-items li:not(:last-child) {
     margin-right: 3rem;
-    margin-bottom: 0;
+    margin-bottom: 0.5rem;
+  }
+  .about--image.portrait {
+    flex: 1;
+  }
+  .about--text.portrait {
+    flex: 1;
   }
   .gallery div:nth-child(2) {
     margin-top: 3rem;
   }
 }
 @media (min-width: 768px) {
+  .header {
+    height: 212px;
+  }
   .about--box:nth-child(even) {
     flex-direction: row-reverse;
   }
-  .about--box:nth-child(even) .about--text {
-    padding-left: 3rem;
+  /* .about--box:nth-child(even) .about--text { */
+  /*   padding-left: 3rem; */
+  /* } */
+  .about--image.landscape {
+    max-width: 789px;
+    width: 100%;
+    flex: 5;
   }
-  .about--image {
-    max-width: 627px;
+  .about--image.portrait {
+    max-width: 463px;
+    width: 100%;
+    flex: 3;
+  }
+  .about--text.landscape {
+    max-width: 465px;
+    width: 100%;
+    flex: 3;
+  }
+  .about--text.portrait {
+    max-width: 789px;
+    width: 100%;
+    flex: 4;
   }
 }
 @media (min-width: 1024px) {
@@ -87,8 +113,8 @@ ul.nav-items li:not(:last-child) {
   }
 }
 @media (min-width: 1280px) {
-  html {
-    font-size: 16px;
+  .about--text.portrait {
+    max-height: 403px;
   }
 }
 
