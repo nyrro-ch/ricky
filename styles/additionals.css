@@ -72,8 +72,8 @@ ul.nav-items li:not(:last-child) {
   .about--text.portrait {
     flex: 1;
   }
-  .gallery div:nth-child(2) {
-    margin-top: 3rem;
+  .gallery div:not(:last-child) {
+    margin-bottom: 1rem;
   }
 }
 @media (min-width: 768px) {
