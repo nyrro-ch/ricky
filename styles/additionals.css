@@ -6,6 +6,9 @@ html {
 body {
   height: 100%;
 }
+.white {
+  fill: '#ffffff'
+}
 .content {
   overflow: hidden;
 }
@@ -26,6 +29,16 @@ ul.nav-items li:not(:last-child) {
 }
 .js-headline .line {
   text-decoration: underline;
+} 
+.js-headline > span {
+  display: inline-block;
+  line-height: normal;
+  overflow: hidden;
+  vertical-align: top;
+}
+.js-headline > span > span {
+  display: inline-block;
+  line-height: 1;
 }
 /* .about--box:nth-child(even) .about--image { */
 /*   transform: rotate(-6deg); */

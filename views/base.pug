@@ -1,7 +1,7 @@
 block variables
 
 doctype html
-html(lang="en")
+html(lang="en" class="dark:bg-black")
   head
     meta(charset="utf-8")
     meta(name="viewport" content="width=device-width, initial-scale=1.0")
@@ -14,7 +14,7 @@ html(lang="en")
     noscript
       link(rel="stylesheet" href="/main.css")
 
-  body(data-barba="wrapper")
+  body(data-barba="wrapper" class="dark:bg-black dark:text-white")
     include shared/navigation.pug
 
     .content(data-barba="container" data-barba-namespace=slug)
