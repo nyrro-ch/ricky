@@ -2,8 +2,8 @@ import { split } from 'utils/text'
 import Animation from 'Components/Animation'
 
 class HeadlineAnimation extends Animation {
-  constructor({ element }) {
-    super({ element })
+  constructor({ element, elements }) {
+    super({ element, elements })
   }
 
   splitText () {
@@ -18,7 +18,7 @@ class HeadlineAnimation extends Animation {
     this.titleSpans = this.element.querySelectorAll('span span')
 
     this.tl.from(this.titleSpans, {
-      y: '100%',
+      y: '150%',
       duration: 1.5,
       ease: 'expo.out',
       stagger: 0.1

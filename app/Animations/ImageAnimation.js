@@ -4,7 +4,7 @@ class ImageAnimation extends Animation {
   constructor({ element }) {
     super({ element })
 
-    this.overlay = this.element.parentNode.querySelector('.img-overlay-anim')
+    this.overlay = this.element?.parentNode.querySelector('.img-overlay-anim')
   }
 
   animateIn ( start = '>' ) {

@@ -30,13 +30,15 @@ ul.nav-items li:not(:last-child) {
 .js-headline .line {
   text-decoration: underline;
 } 
-.js-headline > span {
+.js-headline > span,
+.headline-anim > span {
   display: inline-block;
   line-height: normal;
   overflow: hidden;
   vertical-align: top;
 }
-.js-headline > span > span {
+.js-headline > span > span,
+.headline-anim > span > span {
   display: inline-block;
   line-height: 1;
 }
