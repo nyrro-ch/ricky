@@ -20,15 +20,15 @@ export default class {
 
   animateHeaderFooter () {
     this.fadeInNav.animateIn()
-    this.fadeInLines.animateIn('<')
-    this.fadeInFooter.animateIn('<')
+    this.fadeInLines.animateIn('<+=0.25')
+    this.fadeInFooter.animateIn('<+=0.25')
   }
 
   animateHomeIn () {
     this.animateHeaderFooter()
-    this.headlineAnim.animateIn('<+=0.5')
-    this.imageAnim.animateIn('<+=0.5')
-    this.textAnim.animateIn('<+=1')
+    this.headlineAnim.animateIn('<+=1')
+    this.imageAnim.animateIn('<+=1')
+    this.textAnim.animateIn('<+=1.5')
   }
 
   animateAboutIn () {

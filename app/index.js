@@ -28,18 +28,18 @@ class App {
     this.addEventListeners()
 
     const texts = document.querySelectorAll('.about--text')
-    each(texts, (img) => {
+    each(texts, (text) => {
       const timeline = gsap.timeline({
         scrollTrigger: {
-          trigger: img,
+          trigger: text,
           end: 'bottom center',
         },
 
       })
 
       timeline.addLabel('start')
-        .from(img, { autoAlpha: 0 })
-        .from(img, { y: '50px' }, '<')
+        .from(text, { autoAlpha: 0 })
+        .from(text, { y: '50px' }, '<')
         .addLabel('end')
 
     })
@@ -60,30 +60,30 @@ class App {
 
     })
 
-    const headlines = document.querySelectorAll('.headline-anim')
-    each(headlines, (line) => {
-
-      split({ element: line, expression: '<br>'})
-      split({ element: line, expression: '<br>'})
-
-      const timeline = gsap.timeline({
-        scrollTrigger: {
-          trigger: line,
-          end: 'bottom top',
-        },
-
-      })
-
-      this.spans = line.querySelectorAll('span span')
-
-      timeline.from(this.spans, {
-        y: '150%',
-        duration: 1.5,
-        ease: 'expo.out',
-        stagger: 0.1
-      })
-
-    })
+    // const headlines = document.querySelectorAll('.headline-anim')
+    // each(headlines, (line) => {
+    //
+    //   split({ element: line, expression: '<br>'})
+    //   split({ element: line, expression: '<br>'})
+    //
+    //   const timeline = gsap.timeline({
+    //     scrollTrigger: {
+    //       trigger: line,
+    //       end: 'bottom top',
+    //     },
+    //
+    //   })
+    //
+    //   this.spans = line.querySelectorAll('span span')
+    //
+    //   timeline.from(this.spans, {
+    //     y: '150%',
+    //     duration: 1.5,
+    //     ease: 'expo.out',
+    //     stagger: 0.1
+    //   })
+    //
+    // })
 
 
     // barba.init({

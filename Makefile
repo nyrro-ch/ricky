@@ -5,7 +5,7 @@ node:
 	docker run --rm -it -v $(shell pwd):/app -w /app --name backend -p 3000:3000 node:16 npm run backend:dev
 
 build:
-	docker run --rm -it -v $(shell pwd):/app -w /app --name build -p 9000:9000 node:16 npm run build
+	docker run --rm -it -v $(shell pwd):/app -w /app --name build node:16 npm run build
 
 install_all:
 	docker run --rm -it -v $(shell pwd):/app -w /app --name install node:16  npm install
