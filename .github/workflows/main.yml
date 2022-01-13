@@ -26,7 +26,10 @@ jobs:
     - name: Create deployment artifact
       env:
         GITHUB_SHA: ${{ github.sha }}
-      run: tar -czf "${GITHUB_SHA}.tar.gz" .
+      run: |
+        base=$(basename $PWD)
+        cd ..
+        tar -czf "${GITHUB_SHA}.tar.gz" $base 
     - name: Store artifact for distribution
       uses: actions/upload-artifact@v2
       with:
