@@ -26,7 +26,7 @@ jobs:
     - name: Create deployment artifact
       env:
         GITHUB_SHA: ${{ github.sha }}
-      run: tar -czf "${GITHUB_SHA}.tar.gz" 
+      run: tar -czf "${GITHUB_SHA}.tar.gz" app
     - name: Store artifact for distribution
       uses: actions/upload-artifact@v2
       with:
@@ -62,7 +62,7 @@ jobs:
           envs: GITHUB_SHA
           script: |
             mkdir -p "sites/rickycierny.com/releases/${GITHUB_SHA}"
-            tar xzf sites/rickycierny.com/artifacts/${GITHUB_SHA}.tar.gz -C "sites/rickycierny.com/releases/${GITHUB_SHA}" 
+            tar xzf sites/rickycierny.com/artifacts/${GITHUB_SHA}.tar.gz -C "sites/rickycierny.com/releases/${GITHUB_SHA}" --strip-components=1
   activate-release:
     name: Activate release
     runs-on: ubuntu-latest
