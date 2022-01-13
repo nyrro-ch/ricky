@@ -12,7 +12,7 @@ class ThemeMode {
 
   setThemeMode () {
     
-    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    if (localStorage.theme === 'dark' || !('theme' in localStorage)) {
 
       document.documentElement.classList.add('dark')
 
@@ -31,7 +31,7 @@ class ThemeMode {
   }
 
   setDarkMode () {
-    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    if (localStorage.theme === 'dark' || !('theme' in localStorage)) {
       localStorage.theme = 'ligth'
     } else {
       localStorage.theme = 'dark'
