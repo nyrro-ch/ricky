@@ -2,7 +2,7 @@ name: Deploy Application
 
 on:
   push:
-    branches: [ staging ]
+    branches: [ main ]
 
 jobs:
   build:
@@ -21,23 +21,12 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: |
-        cd buildchain
-        yarn install
-        yarn build
-    - name: Configure PHP 8.0
-      uses: shivammathur/setup-php@master
-      with:
-        php-version: 8.0
-        extensions: ctype, curl, gd, imagemagick, iconv, json, mbstring, openssl, pcre, pdo, pdo-mysql, reflection, spl, zip, dom
-    - name: Composer install
-      run: |
-        cd cms
-        composer install --no-dev --no-progress --no-interaction --prefer-dist --optimize-autoloader
-        rm -rf storage
+        npm install
+        npm run build
     - name: Create deployment artifact
       env:
         GITHUB_SHA: ${{ github.sha }}
-      run: tar -czf "${GITHUB_SHA}.tar.gz" cms
+      run: tar -czf "${GITHUB_SHA}.tar.gz" 
     - name: Store artifact for distribution
       uses: actions/upload-artifact@v2
       with:
@@ -60,7 +49,7 @@ jobs:
           port: ${{ secrets.PORT }}
           password: ${{ secrets.PASSWORD }}
           source: ${{ github.sha }}.tar.gz
-          target: stage.jaclyncosmetics.ch/artifacts
+          target: sites/rickycierny.com/artifacts
       - name: Extract archive and create directories
         uses: appleboy/ssh-action@master
         env:
@@ -72,8 +61,8 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           envs: GITHUB_SHA
           script: |
-            mkdir -p "stage.jaclyncosmetics.ch/releases/${GITHUB_SHA}"
-            tar xzf stage.jaclyncosmetics.ch/artifacts/${GITHUB_SHA}.tar.gz -C "stage.jaclyncosmetics.ch/releases/${GITHUB_SHA}" --strip-components=1
+            mkdir -p "sites/rickycierny.com/releases/${GITHUB_SHA}"
+            tar xzf sites/rickycierny.com/artifacts/${GITHUB_SHA}.tar.gz -C "sites/rickycierny.com/releases/${GITHUB_SHA}" 
   activate-release:
     name: Activate release
     runs-on: ubuntu-latest
@@ -83,9 +72,9 @@ jobs:
         uses: appleboy/ssh-action@master
         env:
           GITHUB_SHA: ${{ github.sha }}
-          RELEASE_PATH: stage.jaclyncosmetics.ch/releases/${{ github.sha }}
-          ACTIVATE_RELEASE_PATH: stage.jaclyncosmetics.ch/current
-          SHARED_PATH: stage.jaclyncosmetics.ch/shared
+          RELEASE_PATH: sites/rickycierny.com/releases/${{ github.sha }}
+          ACTIVATE_RELEASE_PATH: sites/rickycierny.com/current
+          SHARED_PATH: sites/rickycierny.com/shared
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
@@ -95,10 +84,7 @@ jobs:
           script: |
             rm -rf $ACTIVATE_RELEASE_PATH
             ln -sr $RELEASE_PATH $ACTIVATE_RELEASE_PATH
-            ln -snfrv "${SHARED_PATH}/.env" "${RELEASE_PATH}"
-            ln -snfrv "${SHARED_PATH}/storage" "${RELEASE_PATH}"
-            ln -snfrv "${SHARED_PATH}/.htaccess" "${RELEASE_PATH}/web"
-            ln -snfrv "${SHARED_PATH}/images" "${RELEASE_PATH}/web"
+            # ln -snfrv "${SHARED_PATH}/.htaccess" "${RELEASE_PATH}"
   clean-up:
     name: Clean up
     runs-on: ubuntu-latest
@@ -107,9 +93,9 @@ jobs:
       - name: Run after hooks
         uses: appleboy/ssh-action@master
         env:
-          RELEASES_PATH: stage.jaclyncosmetics.ch/releases/
-          ARTIFACTS_PATH: stage.jaclyncosmetics.ch/artifacts/
-          RELEASE_PATH: stage.jaclyncosmetics.ch/releases/${{ github.sha }}
+          RELEASES_PATH: sites/rickycierny.com/releases/
+          ARTIFACTS_PATH: sites/rickycierny.com/artifacts/
+          RELEASE_PATH: sites/rickycierny.com/releases/${{ github.sha }}
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
@@ -117,12 +103,6 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           envs: RELEASES_PATH,ARTIFACTS_PATH,RELEASE_PATH
           script: |
-            cd $RELEASE_PATH
-            chmod a+x craft
-            /opt/php80/bin/php craft backup/db
-            /opt/php80/bin/php craft clear-caches/all
-            /opt/php80/bin/php craft up
-            cd ~
             cd $RELEASES_PATH && ls -t -1 | tail -n +6 | xargs rm -rf
             cd ~
             cd $ARTIFACTS_PATH && ls -t -1 | tail -n +6 | xargs rm -rf
