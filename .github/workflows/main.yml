@@ -1,0 +1,128 @@
+name: Deploy Application
+
+on:
+  push:
+    branches: [ staging ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [15.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - run: |
+        cd buildchain
+        yarn install
+        yarn build
+    - name: Configure PHP 8.0
+      uses: shivammathur/setup-php@master
+      with:
+        php-version: 8.0
+        extensions: ctype, curl, gd, imagemagick, iconv, json, mbstring, openssl, pcre, pdo, pdo-mysql, reflection, spl, zip, dom
+    - name: Composer install
+      run: |
+        cd cms
+        composer install --no-dev --no-progress --no-interaction --prefer-dist --optimize-autoloader
+        rm -rf storage
+    - name: Create deployment artifact
+      env:
+        GITHUB_SHA: ${{ github.sha }}
+      run: tar -czf "${GITHUB_SHA}.tar.gz" cms
+    - name: Store artifact for distribution
+      uses: actions/upload-artifact@v2
+      with:
+        name: app-build
+        path: ${{ github.sha }}.tar.gz
+  
+  prepare-release-on-server:
+    name: Sync application to server
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - uses: actions/download-artifact@v2
+        with:
+          name: app-build
+      - name: Upload
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          port: ${{ secrets.PORT }}
+          password: ${{ secrets.PASSWORD }}
+          source: ${{ github.sha }}.tar.gz
+          target: stage.jaclyncosmetics.ch/artifacts
+      - name: Extract archive and create directories
+        uses: appleboy/ssh-action@master
+        env:
+          GITHUB_SHA: ${{ github.sha }}
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          port: ${{ secrets.PORT }}
+          password: ${{ secrets.PASSWORD }}
+          envs: GITHUB_SHA
+          script: |
+            mkdir -p "stage.jaclyncosmetics.ch/releases/${GITHUB_SHA}"
+            tar xzf stage.jaclyncosmetics.ch/artifacts/${GITHUB_SHA}.tar.gz -C "stage.jaclyncosmetics.ch/releases/${GITHUB_SHA}" --strip-components=1
+  activate-release:
+    name: Activate release
+    runs-on: ubuntu-latest
+    needs: [build, prepare-release-on-server]
+    steps:
+      - name: Activate release
+        uses: appleboy/ssh-action@master
+        env:
+          GITHUB_SHA: ${{ github.sha }}
+          RELEASE_PATH: stage.jaclyncosmetics.ch/releases/${{ github.sha }}
+          ACTIVATE_RELEASE_PATH: stage.jaclyncosmetics.ch/current
+          SHARED_PATH: stage.jaclyncosmetics.ch/shared
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          port: ${{ secrets.PORT }}
+          password: ${{ secrets.PASSWORD }}
+          envs: GITHUB_SHA,RELEASE_PATH,ACTIVATE_RELEASE_PATH,SHARED_PATH
+          script: |
+            rm -rf $ACTIVATE_RELEASE_PATH
+            ln -sr $RELEASE_PATH $ACTIVATE_RELEASE_PATH
+            ln -snfrv "${SHARED_PATH}/.env" "${RELEASE_PATH}"
+            ln -snfrv "${SHARED_PATH}/storage" "${RELEASE_PATH}"
+            ln -snfrv "${SHARED_PATH}/.htaccess" "${RELEASE_PATH}/web"
+            ln -snfrv "${SHARED_PATH}/images" "${RELEASE_PATH}/web"
+  clean-up:
+    name: Clean up
+    runs-on: ubuntu-latest
+    needs: [build, prepare-release-on-server, activate-release]
+    steps:
+      - name: Run after hooks
+        uses: appleboy/ssh-action@master
+        env:
+          RELEASES_PATH: stage.jaclyncosmetics.ch/releases/
+          ARTIFACTS_PATH: stage.jaclyncosmetics.ch/artifacts/
+          RELEASE_PATH: stage.jaclyncosmetics.ch/releases/${{ github.sha }}
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          port: ${{ secrets.PORT }}
+          password: ${{ secrets.PASSWORD }}
+          envs: RELEASES_PATH,ARTIFACTS_PATH,RELEASE_PATH
+          script: |
+            cd $RELEASE_PATH
+            chmod a+x craft
+            /opt/php80/bin/php craft backup/db
+            /opt/php80/bin/php craft clear-caches/all
+            /opt/php80/bin/php craft up
+            cd ~
+            cd $RELEASES_PATH && ls -t -1 | tail -n +6 | xargs rm -rf
+            cd ~
+            cd $ARTIFACTS_PATH && ls -t -1 | tail -n +6 | xargs rm -rf
