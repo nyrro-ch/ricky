@@ -70,6 +70,21 @@ ul.nav-items li:not(:last-child) {
   font-size: 1.875rem;
   display: block;
 }
+.rec--tools li::before {
+  content: '\01F4BE';
+  font-size: 1.875rem;
+  display: block;
+}
+.rec--series li::before {
+  content: '\01F3A5';
+  font-size: 1.875rem;
+  display: block;
+}
+.rec--games li::before {
+  content: '\01F3AE';
+  font-size: 1.875rem;
+  display: block;
+}
 
 @media (min-width: 425px) {
   .intro-text {
