@@ -84,7 +84,6 @@ jobs:
           script: |
             rm -rf $ACTIVATE_RELEASE_PATH
             ln -sr $RELEASE_PATH $ACTIVATE_RELEASE_PATH
-            ln -snfrv "${SHARED_PATH}/assets" "${RELEASE_PATH}/public/"
   clean-up:
     name: Clean up
     runs-on: ubuntu-latest
